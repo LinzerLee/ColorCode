@@ -1,0 +1,41 @@
+# Project: tools
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ../obj/Utility.o ../obj/Parser.o ../obj/Appender.o ../obj/Layout.o ../obj/Logger.o
+LINKOBJ  = ../obj/Utility.o ../obj/Parser.o ../obj/Appender.o ../obj/Layout.o ../obj/Logger.o
+LIBS     = -L"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -m32
+INCS     = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = ../lib/tools.a
+CXXFLAGS = $(CXXINCS) -m32
+CFLAGS   = $(INCS) -m32
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	ar r $(BIN) $(LINKOBJ)
+	ranlib $(BIN)
+
+../obj/Utility.o: Utility.cpp
+	$(CPP) -c Utility.cpp -o ../obj/Utility.o $(CXXFLAGS)
+
+../obj/Parser.o: config/Parser.cpp
+	$(CPP) -c config/Parser.cpp -o ../obj/Parser.o $(CXXFLAGS)
+
+../obj/Appender.o: log/Appender.cpp
+	$(CPP) -c log/Appender.cpp -o ../obj/Appender.o $(CXXFLAGS)
+
+../obj/Layout.o: log/Layout.cpp
+	$(CPP) -c log/Layout.cpp -o ../obj/Layout.o $(CXXFLAGS)
+
+../obj/Logger.o: log/Logger.cpp
+	$(CPP) -c log/Logger.cpp -o ../obj/Logger.o $(CXXFLAGS)

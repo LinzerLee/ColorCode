@@ -1,0 +1,13 @@
+#define ERROR_SUCCESS          0
+#define ERROR_FAILD            1
+#define ERROR_FILE_NOT_EXIST   2 
+#define ERROR_FILE_NOT_BITMAP  3
+#define ERROR_FILE_READ_FAILD  4
+#define ERROR_FILE_WRITE_FAILD 5
+#define ERROR_FILE_OPEN_FAILD  6
+#define ERROR_MALLOC_FAILD     7
+
+#define WARING_QUEUE_FULL      100
+#define WARING_STACK_FULL      101
+
+#define INFO_NOT_RECOGNITION   201

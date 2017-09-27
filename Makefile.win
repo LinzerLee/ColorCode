@@ -1,0 +1,34 @@
+# Project: ColorCode
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = obj/Main.o obj/colorcode.o obj/bitmap.o
+LINKOBJ  = obj/Main.o obj/colorcode.o obj/bitmap.o
+LIBS     = -L"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc lib/tools.a -g3
+INCS     = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/Linzer/Documents/Projects/ColorCode/tools"
+CXXINCS  = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/Linzer/Documents/Projects/ColorCode/tools"
+BIN      = UIContainer/bin/ColorCode.exe
+CXXFLAGS = $(CXXINCS) -g3 -std=c++11 -Wall -std=c++11
+CFLAGS   = $(INCS) -g3 -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+obj/Main.o: Main.cpp
+	$(CPP) -c Main.cpp -o obj/Main.o $(CXXFLAGS)
+
+obj/colorcode.o: colorcode.cpp
+	$(CPP) -c colorcode.cpp -o obj/colorcode.o $(CXXFLAGS)
+
+obj/bitmap.o: bitmap.cpp
+	$(CPP) -c bitmap.cpp -o obj/bitmap.o $(CXXFLAGS)
